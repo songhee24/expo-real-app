@@ -1,17 +1,18 @@
 import {View, Text, TextInput, StyleSheet, Button} from "react-native";
+import Card from '../components/Card'
 
 const StartGameScreen = props => {
     return (
         <View style={styles.screen}>
             <Text style={styles.title}>Start a New Game!</Text>
-            <View style={styles.inputContainer}>
+            <Card style={styles.inputContainer}>
                 <Text>Select a Number</Text>
                 <TextInput/>
                 <View style={styles.buttonContainer}>
                     <Button title="Reset"/>
                     <Button title="Confirm"/>
                 </View>
-            </View>
+            </Card>
         </View>
     )
 }
@@ -31,14 +32,6 @@ const styles = StyleSheet.create({
         height: 200,
         maxWidth: '80%',
         alignItems: "center",
-        shadowColor: 'black',
-        shadowOffset: {width: 0, height: 2},
-        shadowRadius: 6,
-        shadowOpacity: 0.26,
-        elevation: 5,
-        backgroundColor: 'white',
-        padding: 20,
-        borderRadius: 10,
     },
     buttonContainer: {
         flexDirection: "row",
