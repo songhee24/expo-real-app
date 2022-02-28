@@ -1,21 +1,35 @@
-import {View, Text, TextInput, StyleSheet, Button} from "react-native";
+import {View, Text, TextInput, StyleSheet, Button, Keyboard} from "react-native";
 import Card from '../components/Card'
 import Colors from "../constants/colors";
 import Input from "../components/Input";
+import {useState} from "react";
+import {TouchableWithoutFeedback} from "react-native-web";
 
 const StartGameScreen = props => {
+    const [enteredValue, setEnteredValue] = useState('')
+
+    const numberInputHandler = inputText => {
+        setEnteredValue(inputText.replace(/[^0-9]/g, ''))
+    }
+
     return (
-        <View style={styles.screen}>
-            <Text style={styles.title}>Start a New Game!</Text>
-            <Card style={styles.inputContainer}>
-                <Text>Select a Number</Text>
-                <Input style={styles.input} keyboardType="number-pad" maxLength={2}/>
-                <View style={styles.buttonContainer}>
-                    <View style={styles.button}><Button title="Confirm" color={Colors.primary} /></View>
-                    <View style={styles.button}><Button title="Reset" color={Colors.accent} /></View>
-                </View>
-            </Card>
-        </View>
+        <TouchableWithoutFeedback onPress={() => {
+            Keyboard.dismiss()
+        }}>
+            <View style={styles.screen}>
+                <Text style={styles.title}>Start a New Game!</Text>
+                <Card style={styles.inputContainer}>
+                    <Text>Select a Number</Text>
+                    <Input style={styles.input} keyboardType="number-pad" maxLength={2}
+                           onChangeText={numberInputHandler} value={enteredValue}/>
+                    <View style={styles.buttonContainer}>
+                        <View style={styles.button}><Button title="Confirm" color={Colors.primary}/></View>
+                        <View style={styles.button}><Button title="Reset" color={Colors.accent}/></View>
+                    </View>
+                </Card>
+            </View>
+        </TouchableWithoutFeedback>
+
     )
 }
 
@@ -46,7 +60,7 @@ const styles = StyleSheet.create({
     },
     input: {
         width: 50,
-        textAlign:'center',
+        textAlign: 'center',
     }
 })
 
