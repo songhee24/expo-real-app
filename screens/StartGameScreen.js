@@ -1,4 +1,12 @@
-import { View, Text, StyleSheet, Button, Keyboard, Alert, TouchableWithoutFeedback } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  Keyboard,
+  Alert,
+  TouchableWithoutFeedback,
+} from "react-native";
 import Card from "../components/Card";
 import Colors from "../constants/colors";
 import Input from "../components/Input";
@@ -38,7 +46,7 @@ const StartGameScreen = (props) => {
     setConfirmed(true);
     setEnteredValue("");
     setSelectedNumber(chosenNumber);
-    Keyboard.dismiss()
+    Keyboard.dismiss();
   };
 
   let confirmedOutput;
@@ -48,7 +56,10 @@ const StartGameScreen = (props) => {
       <Card style={styles.summaryContainer}>
         <Text>You Selected</Text>
         <NumberContainer>{selectedNumber}</NumberContainer>
-        <Button title="START GAME" onPress={() => props.onStartGame(selectedNumber)} />
+        <Button
+          title="START GAME"
+          onPress={() => props.onStartGame(selectedNumber)}
+        />
       </Card>
     );
   }
