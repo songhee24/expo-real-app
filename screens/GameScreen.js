@@ -1,5 +1,7 @@
-import { StyleSheet } from "react-native";
-import {useState} from "react";
+import { StyleSheet, View } from "react-native";
+import { useState } from "react";
+import { Text } from "react-native-web";
+import NumberContainer from "../components/NumberContainer";
 
 const generateRandomBetween = (min, max, exclude) => {
   min = Math.ceil(min);
@@ -13,8 +15,15 @@ const generateRandomBetween = (min, max, exclude) => {
 };
 
 const GameScreen = (props) => {
-  const [currentGuess, setCurrentGuess] = useState(generateRandomBetween(1, 100, props.userChoice))
-
+  const [currentGuess, setCurrentGuess] = useState(
+    generateRandomBetween(1, 100, props.userChoice)
+  );
+  return (
+    <View>
+      <Text>Opponent,s Guess</Text>
+      <NumberContainer />
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({});
